@@ -13,9 +13,9 @@ export async function onRequest(context) {
   let messageWidth = 0;
   for (const char of firstLine) {
     if (/[가-힣]/.test(char)) {
-      messageWidth += 30;
+      messageWidth += 34;
     } else {
-      messageWidth += 17;
+      messageWidth += 19;
     }
   }
   
