@@ -14,7 +14,7 @@ export async function onRequest(context) {
     }
   }
   
-  const messageX = 150;
+  const messageX = 170;
   const timeX = messageX + messageWidth + 20;
 
   // 배경 이미지 로드
@@ -38,7 +38,7 @@ export async function onRequest(context) {
       <text x="${messageX}" y="140" fill="#EEEEEE" font-size="36" font-family="'Nanum Gothic', sans-serif" font-weight="400">${message}</text>
       
       <!-- 시간 (메시지 끝 + 20px) -->
-      <text x="${timeX}" y="140" fill="#C2C2C2" font-size="20" font-family="'Nanum Gothic', sans-serif" font-weight="400">${time}</text>
+      <text x="${timeX}" y="125" fill="#C2C2C2" font-size="20" font-family="'Nanum Gothic', sans-serif" font-weight="400">${time}</text>
     </svg>
   `;
 
