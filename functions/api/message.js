@@ -9,13 +9,13 @@ export async function onRequest(context) {
   const firstLine = isMultiLine ? message.substring(0, 20) : message;
   const secondLine = isMultiLine ? message.substring(20) : '';
 
-  // 첫 줄 기준 x좌표 계산
+  // 첫 줄 기준 x좌표 계산 (폰트 38px 기준)
   let messageWidth = 0;
   for (const char of firstLine) {
     if (/[가-힣]/.test(char)) {
-      messageWidth += 22;
+      messageWidth += 38;
     } else {
-      messageWidth += 13;
+      messageWidth += 22;
     }
   }
   
