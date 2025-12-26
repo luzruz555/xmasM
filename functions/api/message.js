@@ -35,7 +35,7 @@ export async function onRequest(context) {
       <image href="data:image/png;base64,${bgBase64}" width="1024" height="256"/>
       
       <!-- 메시지 -->
-      <text x="${messageX}" y="130" fill="#EEEEEE" font-size="36" font-family="'Nanum Gothic', sans-serif" font-weight="400">${message}</text>
+      <text x="${messageX}" y="130" fill="#EEEEEE" font-size="38" font-family="'Nanum Gothic', sans-serif" font-weight="400">${message}</text>
       
       <!-- 시간 (메시지 끝 + 20px) -->
       <text x="${timeX}" y="165" fill="#C2C2C2" font-size="20" font-family="'Nanum Gothic', sans-serif" font-weight="400">${time}</text>
