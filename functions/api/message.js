@@ -20,7 +20,7 @@ export async function onRequest(context) {
   }
   
   const messageX = 200;
-  const timeX = messageX + messageWidth + 25;
+  const timeX = messageX + messageWidth + 20;
   const timeY = isMultiLine ? 200 : 160;
 
   // 배경 이미지 로드
