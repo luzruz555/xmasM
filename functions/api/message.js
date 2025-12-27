@@ -23,23 +23,23 @@ export async function onRequest(context) {
     lineLimit = 32;
   }
 
-  // 20자 기준 줄바꿈
-  const isMultiLine = message.length > 20;
-  const firstLine = isMultiLine ? message.substring(0, 20) : message;
-  const secondLine = isMultiLine ? message.substring(20) : '';
+  // 줄바꿈 처리
+  const isMultiLine = message.length > lineLimit;
+  const firstLine = isMultiLine ? message.substring(0, lineLimit) : message;
+  const secondLine = isMultiLine ? message.substring(lineLimit) : '';
 
-  // 첫 줄 기준 x좌표 계산 (폰트 38px 기준)
+  // 첫 줄 기준 x좌표 계산
   let messageWidth = 0;
   for (const char of firstLine) {
     if (/[가-힣]/.test(char)) {
-      messageWidth += 34;
+      messageWidth += charWidth;
     } else {
-      messageWidth += 19;
+      messageWidth += charWidthEng;
     }
   }
   
   const messageX = 200;
-  const timeX = messageX + messageWidth + 20;
+  const timeX = messageX + messageWidth + 25;
   const timeY = isMultiLine ? 200 : 160;
 
   // 배경 이미지 로드
@@ -52,13 +52,13 @@ export async function onRequest(context) {
   let messageText = '';
   if (isMultiLine) {
     messageText = `
-      <text x="${messageX}" y="130" fill="#EEEEEE" font-size="38" font-family="'Nanum Gothic', sans-serif" font-weight="400">
+      <text x="${messageX}" y="130" fill="#EEEEEE" font-size="${fontSize}" font-family="'Nanum Gothic', sans-serif" font-weight="400">
         <tspan x="${messageX}" dy="0">${firstLine}</tspan>
-        <tspan x="${messageX}" dy="45">${secondLine}</tspan>
+        <tspan x="${messageX}" dy="${fontSize + 7}">${secondLine}</tspan>
       </text>
     `;
   } else {
-    messageText = `<text x="${messageX}" y="130" fill="#EEEEEE" font-size="38" font-family="'Nanum Gothic', sans-serif" font-weight="400">${message}</text>`;
+    messageText = `<text x="${messageX}" y="130" fill="#EEEEEE" font-size="${fontSize}" font-family="'Nanum Gothic', sans-serif" font-weight="400">${message}</text>`;
   }
 
   const svg = `
