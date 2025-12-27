@@ -15,12 +15,12 @@ export async function onRequest(context) {
     fontSize = 34;
     charWidth = 27;
     charWidthEng = 15;
-    lineLimit = 27;
+    lineLimit = 26;
   } else {
     fontSize = 30;
     charWidth = 22;
     charWidthEng = 12;
-    lineLimit = 35;
+    lineLimit = 33;
   }
 
   // 줄바꿈 처리
