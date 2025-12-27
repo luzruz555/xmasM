@@ -1,9 +1,11 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
 
-  const message = url.searchParams.get('message') || '메시지 없음';
-  const time = url.searchParams.get('time') || '오후 12:00';
+  const messageRaw = url.searchParams.get('message') || '메시지 없음';
+const timeRaw = url.searchParams.get('time') || '오후 12:00';
 
+const message = decodeURIComponent(messageRaw);
+const time = decodeURIComponent(timeRaw);
   // 메시지 길이에 따라 폰트 크기 조절
   let fontSize, charWidth, charWidthEng, lineLimit;
   if (message.length <= 20) {
