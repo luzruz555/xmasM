@@ -4,6 +4,25 @@ export async function onRequest(context) {
   const message = url.searchParams.get('message') || '메시지 없음';
   const time = url.searchParams.get('time') || '오후 12:00';
 
+  // 메시지 길이에 따라 폰트 크기 조절
+  let fontSize, charWidth, charWidthEng, lineLimit;
+  if (message.length <= 20) {
+    fontSize = 38;
+    charWidth = 34;
+    charWidthEng = 19;
+    lineLimit = 20;
+  } else if (message.length <= 40) {
+    fontSize = 30;
+    charWidth = 27;
+    charWidthEng = 15;
+    lineLimit = 25;
+  } else {
+    fontSize = 24;
+    charWidth = 22;
+    charWidthEng = 12;
+    lineLimit = 32;
+  }
+
   // 20자 기준 줄바꿈
   const isMultiLine = message.length > 20;
   const firstLine = isMultiLine ? message.substring(0, 20) : message;
